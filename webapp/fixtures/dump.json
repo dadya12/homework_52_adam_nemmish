@@ -1,0 +1,20 @@
+[
+{
+  "model": "webapp.task",
+  "pk": 3,
+  "fields": {
+    "description": "Sleep on eight",
+    "status": "new",
+    "date_finish": "2023-11-28"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 7,
+  "fields": {
+    "description": "Eat our brekfast",
+    "status": "done",
+    "date_finish": "2022-11-05"
+  }
+}
+]
