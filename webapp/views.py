@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from webapp.models import Task, status_choices
 from django.http import HttpResponseRedirect
 # Create your views here.
@@ -10,7 +10,7 @@ def home(requset):
     return render(requset, 'home.html')
 
 def tasks_views(requset, pk):
-    tasks = Task.objects.get(id=pk)
+    tasks = get_object_or_404(Task, pk=pk)
     return render(requset, 'details_task.html', {'tasks': tasks})
 
 def create_new(request):
