@@ -4,6 +4,7 @@
   "pk": 3,
   "fields": {
     "description": "Sleep on eight",
+    "details_description": "8 clock",
     "status": "new",
     "date_finish": "2023-11-28"
   }
@@ -12,9 +13,20 @@
   "model": "webapp.task",
   "pk": 7,
   "fields": {
-    "description": "Eat our brekfast",
+    "description": "Eat our breakfast",
+    "details_description": "on 9 pm",
     "status": "done",
     "date_finish": "2022-11-05"
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 9,
+  "fields": {
+    "description": "Make dinner",
+    "details_description": "chicken",
+    "status": "in_progress",
+    "date_finish": "2022-10-09"
   }
 }
 ]

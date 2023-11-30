@@ -15,6 +15,7 @@ def create_new(request):
     elif request.method == "POST":
         Task.objects.create(
             description= request.POST.get('description'),
+            details_description=request.POST.get('details_description'),
             status= request.POST.get('status'),
             date_finish= request.POST.get('date_finish')
         )
