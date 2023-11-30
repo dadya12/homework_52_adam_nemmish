@@ -13,9 +13,9 @@
     <p>{{ task.description}}</p>
     <p>{{ task.status }}</p>
     <p>{{ task.date_finish }}</p>
-    <a href="/">Подробнее...</a>
+    <a href="/details/{{ task.pk }}/">Подробнее...</a>
     </div>
 {% endfor %}
-<a href="/">На главную</a>
+<a href="{% url 'home' %}">На главную</a>
 </body>
 </html>

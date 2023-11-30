@@ -9,6 +9,10 @@ def display_task(request):
 def home(requset):
     return render(requset, 'home.html')
 
+def tasks_views(requset, pk):
+    tasks = Task.objects.get(id=pk)
+    return render(requset, 'details_task.html', {'tasks': tasks})
+
 def create_new(request):
     if request.method == "GET":
         return render(request, 'create_task.html', {'status': status_choices})
