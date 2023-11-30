@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Детальный обзор:</h1>
-<p>{{ tasks.description }}</p>
-<p>{{ tasks.details_description }}</p>
-<p>{{ tasks.status }}</p>
-<p>{{ tasks.date_finish }}</p>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block navbar %}<a class="nav-link active" aria-current="page" href="{% url 'display_task' %}">Просмотр задач</a>{% endblock %}
+
+    <title>{% block title %}Details{% endblock %}</title>
+
+{% block content %}
+    <h1>Детальный обзор:</h1>
+    <div class="card text-center mb-3" style="width: 18rem; border-radius: 40px; background-color: bisque; margin-top: 50px">
+  <div class="card-body">
+    <h5 class="card-title">{{ tasks.description }}</h5>
+    <h6 class="card-text">{{ tasks.details_description }}</h6>
+    <p class="card-text">{{ tasks.status }}</p>
+    <h6 class="card-title">{{ tasks.date_finish}}</h6>
+  </div>
+</div>
+{% endblock %}

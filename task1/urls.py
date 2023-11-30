@@ -24,5 +24,5 @@ urlpatterns = [
     path('', home, name='home'),
     path('tasks/', display_task, name='display_task'),
     path('add_task/', create_new, name='create_new'),
-    path('details/<int:pk>/', tasks_views)
+    path('details/<int:pk>/', tasks_views, name='display_view')
 ]
