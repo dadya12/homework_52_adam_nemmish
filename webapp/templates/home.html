@@ -1,13 +1,15 @@
-{% extends 'base.html' %}
-
-    <title>{% block title %}Welcome{% endblock %}</title>
-
-{% block content %}
-    <br>
-    <br>
-<h1>Добро пожаловать в To Do LIst!</h1>
-    <br>
-    <br>
-<a class="btn btn-primary" href="{% url 'display_task' %}" role="button">Просмотр задач</a>
-<a class="btn btn-primary" href="{% url 'create_new' %}" role="button">Создать задачу</a>
-{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+<h1>Welcom To Do LIst!</h1>
+<a href="{% url 'display_task' %}">Посмотреть задачи</a>
+<br>
+<br>
+<a href="{% url 'create_new' %}">Создать задачу</a>
+</body>
+</html>

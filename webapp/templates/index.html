@@ -1,19 +1,21 @@
-{% extends 'base.html' %}
-
-{% block navbar %}<a class="nav-link active" aria-current="page" href="{% url 'home' %}">На главную</a>{% endblock %}
-
-    <title>{% block title %}Tasks{% endblock %}</title>
-
-{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
 <h1>Ваши задачи:</h1>
 {% for task in tasks %}
-    <div class="card text-center mb-3" style="width: 18rem; border-radius: 40px; background-color: bisque; margin-top: 50px">
-  <div class="card-body">
-    <h5 class="card-title">{{ task.description }}</h5>
-    <p class="card-text">{{ task.status }}</p>
-    <h6 class="card-title">{{ task.date_finish}}</h6>
-    <a href="/details/{{ task.pk }}/" class="btn btn-primary">Подробнее...</a>
-  </div>
-</div>
+    <div class="main">
+    <p>{{ task.description}}</p>
+    <p>{{ task.status }}</p>
+    <p>{{ task.date_finish }}</p>
+    <a href="/details/{{ task.pk }}/">Подробнее...</a>
+    </div>
 {% endfor %}
-{% endblock %}
+<a href="{% url 'home' %}">На главную</a>
+</body>
+</html>

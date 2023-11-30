@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
-
-{% block navbar %}<a class="nav-link active" aria-current="page" href="{% url 'home' %}">На главную</a>{% endblock %}
-
-    <title>{% block title %}Add Task{% endblock %}</title>
-
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Task</title>
+</head>
+<body>
 <h1>Добавьте задачу:</h1>
 <form method="post" action="{% url 'create_new' %}">
     {% csrf_token %}
@@ -30,4 +30,5 @@
     <br>
     <button type="submit">Добавить</button>
 </form>
-{% endblock %}
+</body>
+</html>
