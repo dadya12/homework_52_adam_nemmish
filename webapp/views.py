@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from webapp.models import Task, status_choices
-from django.http import HttpResponseRedirect
+from webapp.validate import validate
 # Create your views here.
 def display_task(request):
     tasks = Task.objects.all()
@@ -17,13 +17,18 @@ def create_new(request):
     if request.method == "GET":
         return render(request, 'create_task.html', {'status': status_choices})
     elif request.method == "POST":
-        task = Task.objects.create(
-            description=request.POST.get('description'),
-            details_description=request.POST.get('details_description'),
-            status=request.POST.get('status'),
-            date_finish=request.POST.get('date_finish')
-        )
-        return redirect('display_view', pk=task.pk)
+        description = request.POST.get('description')
+        details_description = request.POST.get('details_description')
+        status = request.POST.get('status')
+        date_finish = request.POST.get('date_finish')
+        task = Task(description=description, details_description=details_description, status=status, date_finish=date_finish)
+        errors = validate(description, status)
+
+        if errors:
+            return render(request, 'create_task.html', {'errors': errors, 'status': status_choices, 'task': task})
+        else:
+            task.save()
+            return redirect('display_view', pk=task.pk)
 
 def update_new(request, pk):
     task = get_object_or_404(Task, pk=pk)
@@ -35,9 +40,12 @@ def update_new(request, pk):
         task.details_description = request.POST.get('details_description')
         task.status = request.POST.get('status')
         task.date_finish = request.POST.get('date_finish')
-        task.save()
-
-        return redirect('display_view', pk=task.pk)
+        errors = validate(task.description, task.status)
+        if errors:
+            return render(request, 'update_task.html', {'errors': errors, 'task': task, 'status': status_choices})
+        else:
+            task.save()
+            return redirect('display_view', pk=task.pk)
 
 def task_delete(request, pk):
     task = get_object_or_404(Task, pk=pk)
