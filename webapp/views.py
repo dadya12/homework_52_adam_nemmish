@@ -18,9 +18,24 @@ def create_new(request):
         return render(request, 'create_task.html', {'status': status_choices})
     elif request.method == "POST":
         task = Task.objects.create(
-            description= request.POST.get('description'),
+            description=request.POST.get('description'),
             details_description=request.POST.get('details_description'),
-            status= request.POST.get('status'),
-            date_finish= request.POST.get('date_finish')
+            status=request.POST.get('status'),
+            date_finish=request.POST.get('date_finish')
         )
         return redirect('display_view', pk=task.pk)
+
+def update_new(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == "GET":
+        return render(request, 'update_task.html', {'task': task, 'status': status_choices})
+    elif request.method == "POST":
+
+        task.description = request.POST.get('description')
+        task.details_description = request.POST.get('details_description')
+        task.status = request.POST.get('status')
+        task.date_finish = request.POST.get('date_finish')
+        task.save()
+
+        return redirect('display_view', pk=task.pk)
+

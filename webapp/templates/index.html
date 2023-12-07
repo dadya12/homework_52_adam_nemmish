@@ -1,18 +1,23 @@
 {% extends 'base.html' %}
 
-{% block navbar %}<a class="nav-link active" aria-current="page" href="{% url 'home' %}">На главную</a>{% endblock %}
+{% block navbar %}
+    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">На главную</a>
+{% endblock %}
 
     <title>{% block title %}Tasks{% endblock %}</title>
 
 {% block content %}
-<h1>Ваши задачи:</h1>
+<h1 style="margin-top: 50px">Ваши задачи:</h1>
 {% for task in tasks %}
     <div class="card text-center mb-3" style="width: 18rem; border-radius: 40px; background-color: bisque; margin-top: 50px">
   <div class="card-body">
     <h5 class="card-title">{{ task.description }}</h5>
     <p class="card-text">{{ task.status }}</p>
     <h6 class="card-title">{{ task.date_finish}}</h6>
-    <a href="/details/{{ task.pk }}/" class="btn btn-primary">Подробнее...</a>
+    <a href="{% url 'display_view' pk=task.pk %}" class="btn btn-primary">Подробнее...</a>
+    <br>
+    <br>
+    <a href="{% url 'update_task' pk=task.pk %}" class="btn btn-primary">Редактировать</a>
   </div>
 </div>
 {% endfor %}

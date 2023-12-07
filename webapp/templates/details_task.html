@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 
-{% block navbar %}<a class="nav-link active" aria-current="page" href="{% url 'display_task' %}">Просмотр задач</a>{% endblock %}
+{% block navbar %}
+    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">На главную</a>
+    <a class="nav-link active" aria-current="page" href="{% url 'display_task' %}" style="margin-left: 20px; margin-right: 20px">Просмотр задач</a>
+    <a class="nav-link active" aria-current="page" href="{% url 'update_task' pk=tasks.pk %}">Редактировать</a>
+    <a class="nav-link active" aria-current="page" href="{% url 'task_delete' pk=tasks.pk %}">Удалить</a>
+{% endblock %}
 
     <title>{% block title %}Details{% endblock %}</title>
 
 {% block content %}
-    <h1>Детальный обзор:</h1>
+    <h1 style="margin-top: 50px">Детальный обзор:</h1>
     <div class="card text-center mb-3" style="width: 18rem; border-radius: 40px; background-color: bisque; margin-top: 50px">
   <div class="card-body">
     <h5 class="card-title">{{ tasks.description }}</h5>

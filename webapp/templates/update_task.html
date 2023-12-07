@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="margin-right: 20px">На главную</a>
+    <a class="nav-link active" aria-current="page" href="{% url 'display_task' %}">Просмотр задач</a>
+{% endblock %}
+
+    <title>{% block title %}Update Task{% endblock %}</title>
+
+{% block content %}
+<h1 style="margin-top: 50px">Обновите задачу:</h1>
+<form method="post">
+    {% csrf_token %}
+    <lable for="description">Описание:</lable>
+    <textarea name="description" required>{{ task.description }}</textarea>
+    <br>
+    <br>
+    <label for="details_description">Подробное описание:</label>
+    <textarea name="details_description">{{ task.details_description }}</textarea>
+    <br>
+    <br>
+    <lable for="status">Статус:</lable>
+    <select name="status" required>
+        {% for status in status %}
+            <option value="{{ status.0 }}">{{ status.1 }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <lable for="date_finish">Время завершения:</lable>
+    <input type="text" name="date_finish" placeholder="YYYY-MM-DD" value="{{ task.date_finish }}">
+    <br>
+    <br>
+    <button type="submit" value="update">Добавить</button>
+</form>
+{% endblock %}

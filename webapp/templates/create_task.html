@@ -5,7 +5,7 @@
     <title>{% block title %}Add Task{% endblock %}</title>
 
 {% block content %}
-<h1>Добавьте задачу:</h1>
+<h1 style="margin-top: 50px">Добавьте задачу:</h1>
 <form method="post" action="{% url 'create_new' %}">
     {% csrf_token %}
     <lable for="description">Описание:</lable>
@@ -13,7 +13,7 @@
     <br>
     <br>
     <label for="details_description">Подробное описание:</label>
-    <textarea name="details_description" required></textarea>
+    <textarea name="details_description"></textarea>
     <br>
     <br>
     <lable for="status">Статус:</lable>
