@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="margin-right: 20px">На главную</a>
+    <a class="nav-link active" aria-current="page" href="{% url 'display_task' %}">Просмотр задач</a>
+{% endblock %}
+
+    <title>{% block title %}Delete Task{% endblock %}</title>
+
+{% block content %}
+<h1 style="margin-top: 50px">Вы точно хотите удалить эту задачу!? </h1>
+<form method="post">
+    {% csrf_token %}
+<button type="submit" class="btn btn-primary">ДА</button>
+<a class="btn btn-primary" href="{% url 'display_view' pk=task.pk %}" role="button">НЕТ</a>
+</form>
+{% endblock %}

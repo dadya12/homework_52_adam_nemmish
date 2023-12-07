@@ -26,5 +26,5 @@ urlpatterns = [
     path('add_task/', create_new, name='create_new'),
     path('details/<int:pk>/', tasks_views, name='display_view'),
     path('update/<int:pk>/', update_new, name='update_task'),
-    path('delete/<int:pk>/', task_delete, name='task_delete')
+    path('delete_task/<int:pk>/', task_delete, name='task_delete')
 ]

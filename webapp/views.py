@@ -39,3 +39,10 @@ def update_new(request, pk):
 
         return redirect('display_view', pk=task.pk)
 
+def task_delete(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == "GET":
+        return render(request, 'task_delete.html', {'task': task})
+    elif request.method == "POST":
+        task.delete()
+        return redirect('display_task')
