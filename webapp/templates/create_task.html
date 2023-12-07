@@ -7,27 +7,6 @@
 {% block content %}
 <h1 style="margin-top: 50px">Добавьте задачу:</h1>
 <form method="post" action="{% url 'create_new' %}">
-    {% csrf_token %}
-    <lable for="description">Описание:</lable>
-    <textarea name="description" required></textarea>
-    <br>
-    <br>
-    <label for="details_description">Подробное описание:</label>
-    <textarea name="details_description"></textarea>
-    <br>
-    <br>
-    <lable for="status">Статус:</lable>
-    <select name="status" required>
-        {% for status in status %}
-            <option value="{{ status.0 }}">{{ status.1 }}</option>
-        {% endfor %}
-    </select>
-    <br>
-    <br>
-    <lable for="date_finish">Время завершения:</lable>
-    <input type="text" name="date_finish" placeholder="YYYY-MM-DD">
-    <br>
-    <br>
-    <button type="submit">Добавить</button>
+    {% include 'partial/task_form.html' with value_submit='Добавить' %}
 </form>
 {% endblock %}
