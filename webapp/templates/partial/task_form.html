@@ -1,22 +1,3 @@
 {% csrf_token %}
-    <lable for="description">Описание:</lable>
-    <textarea class="form-control {% if errors.description %}is-valid{% endif %}" name="description">{{ task.description }}</textarea>
-    <br>
-    <br>
-    <label for="details_description">Подробное описание:</label>
-    <textarea name="details_description">{{ task.details_description }}</textarea>
-    <br>
-    <br>
-    <lable for="status">Статус:</lable>
-    <select class="form-control {% if errors.status %}is-valid{% endif %}" name="status">
-        {% for status in status %}
-            <option value="{{ status.0 }}">{{ status.1 }}</option>
-        {% endfor %}
-    </select>
-    <br>
-    <br>
-    <lable for="date_finish">Время завершения:</lable>
-    <input type="text" name="date_finish" placeholder="YYYY-MM-DD" value="{{ task.date_finish }}">
-    <br>
-    <br>
+{{ form.as_p }}
 <input type="submit" value="{{ value_submit }}">
